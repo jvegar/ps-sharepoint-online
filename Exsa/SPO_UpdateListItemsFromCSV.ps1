@@ -8,7 +8,7 @@ $pwd = ConvertTo-SecureString 'Sh4repoint' -AsPlainText -Force
 $creds = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($userId, $pwd)  
 $ctx = New-Object Microsoft.SharePoint.Client.ClientContext($siteURL)  
 $ctx.credentials = $creds
-$CSVMetadatos = Import-Csv -Path "EstructuraMetadatosFixedDelimiter.csv" -Delimiter '|' -Encoding UTF8
+$CSVMetadatos = Import-Csv -Path "EstructuraMetadatosFixedDelimiter.csv" -Delimiter '|' -Encoding Default
 
 #Function that return list items by title
 function loadListItems {
@@ -52,24 +52,26 @@ try{
     $i = 0
     foreach($csvDoc in $CSVMetadatos){
         Write-Host "Proccessing " $csvDoc.CodigoNuevo " with Position:" ($i+1) "from " $CSVMetadatos.Count "elements."
-        $listItem = $list.GetItemById($csvDoc.IdDoc)  
-        <# $listItem["CodAntiguo"] = $csvDoc.CodigoAntiguo
-        $listItem["CodigoDoc"]  = $csvDoc.CodigoNuevo
-        $listItem["EstadoDoc"]  = "Aprobado"
-        $listItem["NroEdicion"]  = $csvDoc.NroEdicion
-        $listItem["NroRevision"]  = $csvDoc.NroRevision
-        $listItem["Pais"]  = "Perú"
-        $listItem["Title"]  = $csvDoc.Titulo
-        $listItem["TipoDoc"]  = $csvDoc.TipoDocumento #>
-        $lookupGerencia = New-Object Microsoft.SharePoint.Client.FieldLookupValue
-        $lookupGerencia.LookupId  = getGerenciaId $csvDoc.Gerencia $csvDoc.Pais $itemsGerencias             
-        $listItem["GerenciaFuncional"]  = $lookupGerencia.LookupId
-        $lookupArea = New-Object Microsoft.SharePoint.Client.FieldLookupValue
-        $lookupArea.LookupId  = getAreaId $csvDoc.Area $csvDoc.Pais $lookupGerencia.LookupId $itemsAreas 
-        $listItem["Area"] = $lookupArea.LookupId
-        $listItem.Update()  
-        $ctx.load($listItem)      
-        $ctx.executeQuery()
+        if($csvDoc.Gerencia -eq "OPERACIONES Y LOGÍSTICA DE CLIENTES"){
+            $listItem = $list.GetItemById($csvDoc.IdDoc)  
+            <# $listItem["CodAntiguo"] = $csvDoc.CodigoAntiguo
+            $listItem["CodigoDoc"]  = $csvDoc.CodigoNuevo
+            $listItem["EstadoDoc"]  = "Aprobado"
+            $listItem["NroEdicion"]  = $csvDoc.NroEdicion
+            $listItem["NroRevision"]  = $csvDoc.NroRevision
+            $listItem["Pais"]  = "Perú"
+            $listItem["Title"]  = $csvDoc.Titulo
+            $listItem["TipoDoc"]  = $csvDoc.TipoDocumento #>
+            $lookupGerencia = New-Object Microsoft.SharePoint.Client.FieldLookupValue
+            $lookupGerencia.LookupId  = getGerenciaId $csvDoc.Gerencia $csvDoc.Pais $itemsGerencias             
+            $listItem["GerenciaFuncional"]  = $lookupGerencia.LookupId
+            $lookupArea = New-Object Microsoft.SharePoint.Client.FieldLookupValue
+            $lookupArea.LookupId  = getAreaId $csvDoc.Area $csvDoc.Pais $lookupGerencia.LookupId $itemsAreas 
+            $listItem["Area"] = $lookupArea.LookupId
+            $listItem.Update()  
+            $ctx.load($listItem)      
+            $ctx.executeQuery()
+        }        
         $i = $i + 1
     }
 }  
