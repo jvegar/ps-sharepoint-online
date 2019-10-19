@@ -1,0 +1,2 @@
+Nombre;IdDoc;Gerencia;Area;CodigoAntiguo;CodigoNuevo;EstadoDocumento;Revisor ;TipoDocumento;FechaAprobacion;FechaEdicion;NroEdicion;NroRevision;Pais;Titulo
+DMA-TA-001.docx;298;Administración y Finanzas ;Data Maestra ;DMA-TA-001;DMA-TA-001;Aprobado;;TABLA;20/06/2017;20/06/2007;1;0;Perú;CAMPOS CRITICOS DE MATERIALES EN SAP
