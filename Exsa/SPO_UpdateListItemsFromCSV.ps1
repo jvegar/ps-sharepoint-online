@@ -3,8 +3,8 @@ Add-Type -Path "C:\Program Files\Common Files\microsoft shared\Web Server Extens
 Add-Type -Path "C:\Program Files\Common Files\microsoft shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll"
 #Setting global variables
 $siteURL = "https://exsanet.sharepoint.com/sites/psad"
-$userID = "Sharepointadmin@exsa.net"
-$pwd = ConvertTo-SecureString 'Sh4repoint' -AsPlainText -Force
+$userID = "[username]"
+$pwd = ConvertTo-SecureString '[password]t' -AsPlainText -Force
 $creds = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($userId, $pwd)  
 $ctx = New-Object Microsoft.SharePoint.Client.ClientContext($siteURL)  
 $ctx.credentials = $creds
