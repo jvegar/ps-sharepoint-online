@@ -2,8 +2,8 @@
 Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.dll"
 Add-Type -Path "C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll"
  #Get Credentials to connect
-$userID = "Sharepointadmin@exsa.net"
-$pwd = ConvertTo-SecureString 'Sh4repoint' -AsPlainText -Force
+$userID = "[username]"
+$pwd = ConvertTo-SecureString '[password]' -AsPlainText -Force
 $Cred = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($userId, $pwd)  
 
 #Function to Copy a File
