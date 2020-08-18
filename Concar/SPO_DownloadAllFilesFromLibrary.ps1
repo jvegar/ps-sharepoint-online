@@ -56,7 +56,7 @@ $LibraryName="Control de gestión - Concesiones"
 $TargetFolder="E:\CG"
  
 #Setup Credentials to connect
-$Credentials = New-Object System.Net.NetworkCredential("serviciosti", "s1st3m42020$")
+$Credentials = New-Object System.Net.NetworkCredential("[username]", "[password]")
  
 #Setup the context
 $Ctx = New-Object Microsoft.SharePoint.Client.ClientContext($SiteURL)
