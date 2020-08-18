@@ -25,8 +25,8 @@ $SiteUrl = "https://exsanet.sharepoint.com/sites/psad"
 $ListName = "Documentos Publicados" 
 
 #Get Credentials to connect
-$userID = "Sharepointadmin@exsa.net"
-$pwd = ConvertTo-SecureString 'Sh4repoint' -AsPlainText -Force
+$userID = "[username]"
+$pwd = ConvertTo-SecureString '[password]' -AsPlainText -Force
 $Credentials = New-Object Microsoft.SharePoint.Client.SharePointOnlineCredentials($userId, $pwd)  
    
 #Set up the context
