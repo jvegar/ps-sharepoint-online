@@ -204,4 +204,4 @@ foreach($CurrentFolder in $AllFolders)
 
 }
 
- .\SPO_UploadAllFilesToLibrary.ps1 -UserName "serviciosti@gym.com.pe" -Password "s1st3m42020$" -SiteURL "https://gymcompe.sharepoint.com/teams/viales-controldegestion" -DocLibName "Control de gestión - Concesiones" -Folder "E:\CG\sitios\cd\controldegestion"
+ .\SPO_UploadAllFilesToLibrary.ps1 -UserName "[username]" -Password "[password]" -SiteURL "[siteurl]" -DocLibName "[libraryname]" -Folder "folderpath"
